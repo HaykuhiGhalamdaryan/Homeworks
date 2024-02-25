@@ -37,18 +37,16 @@ while True:
     elif move == 'Q':
         break
     
-    if snake_i - monkey_i > 0 and snake_j - monkey_j > 0:
-        snake_i -= 1
-        snake_j -= 1
-    # elif snake_i - monkey_i > 0 and snake_j - monkey_j < 0:
-    #     snake_i -= 1
-    #     snake_j += 1
-    # elif snake_i - monkey_i < 0 and snake_j - monkey_j > 0:
-    #     snake_i += 1
-    #     snake_j -= 1
-    elif snake_i - monkey_i < 0 and snake_j - monkey_j < 0:
-        snake_i += 1
-        snake_j += 1
+    if abs(monkey_i - snake_i) > abs(monkey_j - snake_j):
+        if monkey_i < snake_i:
+            snake_i -= 1
+        elif monkey_i > snake_i:
+            snake_i += 1       
+    else:
+        if monkey_j < snake_j:
+            snake_j -= 1
+        elif monkey_j > snake_j:
+            snake_j += 1
     
     if monkey_i == banana_i and monkey_j == banana_j:
         banana_i = random.randint(1,19)
